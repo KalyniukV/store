@@ -70,9 +70,4 @@ public class ProductsServiceImpl implements ProductsService {
                 .collect(Collectors.toList());
     }
 
-    //    private List<Products> getProducts(Integer[] productsId) {
-//        return Arrays.stream(productsId)
-//                .map(productId -> getById(productId))
-//                .collect(Collectors.toList());
-//    }
 }

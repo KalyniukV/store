@@ -3,45 +3,21 @@ package com.example.store.executor.ordersItems;
 import com.example.store.domain.OrderItems;
 import com.example.store.domain.Orders;
 import com.example.store.domain.Products;
-import com.example.store.executor.Executor;
+import com.example.store.executor.BaseExecutorTest;
 import com.example.store.form.CreateOrderForm;
-import com.example.store.service.OrderItemsService;
-import com.example.store.service.OrdersService;
-import com.example.store.service.ProductsService;
-import com.example.store.util.CommandAsker;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
-@Transactional
-@SpringBootTest
-class CreateOrderItemsExecutorTest {
 
-    @Autowired
-    OrdersService ordersService;
-    @Autowired
-    ProductsService productsService;
-    @Autowired
-    OrderItemsService orderItemsService;
-    CommandAsker commandAsker = mock(CommandAsker.class);
-    Executor executor;
+class CreateOrderItemsExecutorTest extends BaseExecutorTest {
 
-    @BeforeEach
-    void setUp() {
+    @Override
+    protected void setExecutor() {
         executor = new CreateOrderItemsExecutor(commandAsker, orderItemsService, ordersService, productsService);
-    }
-
-    @AfterEach
-    void tearDown() {
     }
 
     @Test
