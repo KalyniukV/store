@@ -40,6 +40,8 @@ public abstract class BaseExecutorTest {
     protected List<Products> productsList;
     protected List<Orders> ordersList;
 
+    protected String ls;
+
     @BeforeEach
     void setUp() {
         commandAsker = mock(CommandAsker.class);
@@ -47,6 +49,8 @@ public abstract class BaseExecutorTest {
 
         outputStreamCaptor = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStreamCaptor));
+
+        ls = System.getProperty("line.separator");
 
         setExecutor();
     }

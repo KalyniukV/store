@@ -39,11 +39,13 @@ class PrinterTest {
         printer.addData(dataList);
         printer.print();
 
-        String table = "first | second     | third                | \r\n" +
-                       "___________________________________________\r\n" +
-                       "qqqq  | wwwwwwwww  | eeeee                | \r\n" +
-                       "a     | ssss       | dddddddddddddddddddd | \r\n" +
-                       "zz    | xxxxxxxxxx |                      | \r\n" +
+        String ls = System.getProperty("line.separator");
+
+        String table = "first | second     | third                | " + ls +
+                       "___________________________________________"  + ls +
+                       "qqqq  | wwwwwwwww  | eeeee                | " + ls +
+                       "a     | ssss       | dddddddddddddddddddd | " + ls +
+                       "zz    | xxxxxxxxxx |                      | " + ls +
                        "___________________________________________";
 
         assertEquals(table, outputStreamCaptor.toString().trim());

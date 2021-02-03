@@ -32,11 +32,11 @@ class ShowOrdersEntryExecutorTest extends BaseExecutorTest {
 
         executor.execute();
 
-        String table =  "orderId | totalPrice | productName     | quantity | orderCreated     | \r\n" +
-                        "______________________________________________________________________\r\n" +
-                        "" + orderId  + "       | 46         | cola,orange     | 22       | " + orderCreated  + " | \r\n" +
-                        "" + order2Id + "       | 8          | lemonade        | 3        | " + orderCreated2 + " | \r\n" +
-                        "" + order3Id + "       | 42         | lemonade,orange | 10       | " + orderCreated3 + " | \r\n" +
+        String table =  "orderId | totalPrice | productName     | quantity | orderCreated     | " + ls +
+                        "______________________________________________________________________"  + ls +
+                        "" + orderId  + "       | 46         | cola,orange     | 22       | " + orderCreated  + " | " + ls +
+                        "" + order2Id + "       | 8          | lemonade        | 3        | " + orderCreated2 + " | " + ls +
+                        "" + order3Id + "       | 42         | lemonade,orange | 10       | " + orderCreated3 + " | " + ls +
                         "______________________________________________________________________";
 
         assertEquals(table, outputStreamCaptor.toString().trim());

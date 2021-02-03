@@ -18,11 +18,11 @@ class ShowProductsInOrderExecutorTest extends BaseExecutorTest {
 
         executor.execute();
 
-        String table = "name     | quantity | \r\n" +
-                       "_____________________\r\n" +
-                       "lemonade | 8        | \r\n" +
-                       "cola     | 12       | \r\n" +
-                       "orange   | 15       | \r\n" +
+        String table = "name     | quantity | " + ls +
+                       "_____________________"  + ls +
+                       "lemonade | 8        | " + ls +
+                       "cola     | 12       | " + ls +
+                       "orange   | 15       | " + ls +
                        "_____________________";
 
         assertEquals(table, outputStreamCaptor.toString().trim());

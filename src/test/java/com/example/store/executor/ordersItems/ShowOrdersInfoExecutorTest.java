@@ -36,11 +36,11 @@ class ShowOrdersInfoExecutorTest extends BaseExecutorTest {
 
         executor.execute();
 
-        String table =  "id | userId | status  | createdAt        | \r\n" +
-                        "__________________________________________\r\n" +
-                        "" + orderId  + "  | " + orderUserId   + "      | created | " + orderCreated  + " | \r\n" +
-                        "" + order2Id + "  | " + order2UserId  + "      | created | " + orderCreated2 + " | \r\n" +
-                        "" + order3Id + "  | " + order3UserId  + "      | created | " + orderCreated3 + " | \r\n" +
+        String table =  "id | userId | status  | createdAt        | " + ls +
+                        "__________________________________________"  + ls +
+                        "" + orderId  + "  | " + orderUserId   + "      | created | " + orderCreated  + " | " + ls +
+                        "" + order2Id + "  | " + order2UserId  + "      | created | " + orderCreated2 + " | " + ls +
+                        "" + order3Id + "  | " + order3UserId  + "      | created | " + orderCreated3 + " | " + ls +
                         "__________________________________________";
 
         assertEquals(table, outputStreamCaptor.toString().trim());

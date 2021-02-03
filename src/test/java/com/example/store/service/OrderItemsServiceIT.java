@@ -51,7 +51,6 @@ class OrderItemsServiceIT {
     }
 
     @Test
-    @Rollback
     void create() {
         OrderItems orderItems = orderItemsService.create(orders, products, 11);
         assertNotNull(orderItems);
@@ -62,7 +61,6 @@ class OrderItemsServiceIT {
     }
 
     @Test
-    @Rollback
     void updateQuantity() {
         orderItemsService.create(orders, products, 11);
 
