@@ -1,5 +1,6 @@
 package com.example.store;
 
+import com.example.store.exception.CancelException;
 import com.example.store.exception.ExecutorNotFoundException;
 import com.example.store.executor.Executor;
 import com.example.store.executor.ExecutorFactory;
@@ -45,7 +46,7 @@ public class Application implements CommandLineRunner {
             executor.execute();
         } catch (BeansException e) {
             System.out.println("Wrong name: " + executeArr[0] + "\n");
-        } catch (ExecutorNotFoundException e) {
+        } catch (ExecutorNotFoundException | CancelException e) {
             System.out.println(e.getMessage());
         }
     }

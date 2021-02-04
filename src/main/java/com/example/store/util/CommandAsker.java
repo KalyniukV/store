@@ -1,5 +1,7 @@
 package com.example.store.util;
 
+import com.example.store.exception.CancelException;
+
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
@@ -16,6 +18,10 @@ public class CommandAsker {
 
     public String ask(String message) {
         out.println(message);
-        return scanner.nextLine();
+        String answer = scanner.nextLine();
+        if (answer.equals("cancel")) {
+            throw new CancelException();
+        }
+        return answer;
     }
 }

@@ -1,7 +1,6 @@
 package com.example.store.executor.products;
 
 import com.example.store.domain.Products;
-import com.example.store.exception.CancelException;
 import com.example.store.exception.PasswordException;
 import com.example.store.exception.ProductsNotFoundException;
 import com.example.store.executor.Executor;
@@ -32,8 +31,7 @@ public class RemoveProductExecutor implements Executor {
             }
             System.out.println("Remove success");
         } catch (ProductsNotFoundException |
-                PasswordException |
-                CancelException e) {
+                PasswordException e) {
             System.out.println(e.getMessage());
         }
     }

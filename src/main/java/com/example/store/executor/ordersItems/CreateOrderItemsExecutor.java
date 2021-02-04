@@ -3,7 +3,6 @@ package com.example.store.executor.ordersItems;
 import com.example.store.domain.OrderItems;
 import com.example.store.domain.Orders;
 import com.example.store.domain.Products;
-import com.example.store.exception.CancelException;
 import com.example.store.exception.ProductsNotFoundException;
 import com.example.store.executor.Executor;
 import com.example.store.form.CreateOrderForm;
@@ -30,40 +29,36 @@ public class CreateOrderItemsExecutor implements Executor {
     public void execute() {
         printProductsId();
 
-        try {
-            CreateOrderForm createOrderForm = new CreateOrderForm(commandAsker);
-            createOrderForm.fillOutTheForm();
-            Map<Integer, Integer> productsMap = createOrderForm.getProductsMap();
+        CreateOrderForm createOrderForm = new CreateOrderForm(commandAsker);
+        createOrderForm.fillOutTheForm();
+        Map<Integer, Integer> productsMap = createOrderForm.getProductsMap();
 
-            List<OrderItems> orderItemsList = new LinkedList<>();
-            List<Integer> notFoundProductsId = new LinkedList<>();
-            Orders orders = ordersService.create();
-            for (Integer id : productsMap.keySet()) {
-                try {
-                    Products product = productsService.getById(id);
-                    Integer quantity = productsMap.get(id);
-                    OrderItems orderItems = orderItemsService.create(orders, product, quantity);
-                    orderItemsList.add(orderItems);
-                } catch (ProductsNotFoundException e) {
-                    notFoundProductsId.add(id);
-                }
+        List<OrderItems> orderItemsList = new LinkedList<>();
+        List<Integer> notFoundProductsId = new LinkedList<>();
+        Orders orders = ordersService.create();
+        for (Integer id : productsMap.keySet()) {
+            try {
+                Products product = productsService.getById(id);
+                Integer quantity = productsMap.get(id);
+                OrderItems orderItems = orderItemsService.create(orders, product, quantity);
+                orderItemsList.add(orderItems);
+            } catch (ProductsNotFoundException e) {
+                notFoundProductsId.add(id);
             }
+        }
 
-            if (orderItemsList.size() > 0) {
-                System.out.println("Success create order items:");
-                printCreateOrderItems(orderItemsList);
-            } else {
-                System.out.println("Order items not created");
-            }
+        if (orderItemsList.size() > 0) {
+            System.out.println("Success create order items:");
+            printCreateOrderItems(orderItemsList);
+        } else {
+            System.out.println("Order items not created");
+        }
 
-            if (notFoundProductsId.size() > 0) {
-                System.out.print("Cud not find products by id: ");
-                notFoundProductsId.forEach(p -> {
-                    System.out.print(p + " ");
-                });
-            }
-        } catch (CancelException e) {
-            System.out.println(e.getMessage());
+        if (notFoundProductsId.size() > 0) {
+            System.out.print("Cud not find products by id: ");
+            notFoundProductsId.forEach(p -> {
+                System.out.print(p + " ");
+            });
         }
     }
 

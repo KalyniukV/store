@@ -19,7 +19,7 @@ public class RemoveProductForm {
     private final CommandAsker commandAsker;
     private String id;
 
-    public void fillOutTheForm() throws CancelException, PasswordException {
+    public void fillOutTheForm() throws PasswordException {
         String command = commandAsker.ask(ASK_FOR_REMOVE);
         if ("all".equals(command.trim())) {
             id = command;
@@ -29,14 +29,11 @@ public class RemoveProductForm {
         passwordValidation();
     }
 
-    private void id(String command) throws CancelException {
+    private void id(String command) {
         if (isNumeric(command)) {
             id = command;
         } else {
             command = commandAsker.ask(ASK_REMOVE_BY_ID);
-            if ("exit".equals(command)) {
-                throw new CancelException();
-            }
             id(command);
         }
     }

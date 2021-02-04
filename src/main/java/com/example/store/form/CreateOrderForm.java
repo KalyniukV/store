@@ -20,7 +20,7 @@ public class CreateOrderForm {
 
     private Map<Integer, Integer> productsMap = new HashMap<>();
 
-    public void fillOutTheForm() throws CancelException {
+    public void fillOutTheForm() {
         System.out.println("[id] [quantity],...,[id] [quantity] example 1 15, 2 4");
         String productsOrder = commandAsker.ask(ASK_PRODUCTS_ID_QUANTITY);
 
@@ -43,7 +43,7 @@ public class CreateOrderForm {
         confirm();
     }
 
-    private void confirm() throws CancelException {
+    private void confirm() {
         productsInfo();
 
         String confirm = commandAsker.ask(ASK_CONFIRM);
