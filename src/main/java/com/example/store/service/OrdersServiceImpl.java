@@ -5,7 +5,7 @@ import com.example.store.domain.Orders;
 import com.example.store.exception.OrdersNotFoundException;
 import com.example.store.repository.OrdersRepository;
 import com.example.store.util.UserHelper;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,10 +13,10 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class OrdersServiceImpl implements OrdersService {
 
-    @Autowired
-    private OrdersRepository ordersRepository;
+    private final OrdersRepository ordersRepository;
 
 
     @Override

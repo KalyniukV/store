@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 
-class UpdateQuantitiesExecutorTest extends BaseExecutorTest {
+class UpdateQuantitiesExecutorIT extends BaseExecutorTest {
 
     @Override
     protected void setExecutor() {

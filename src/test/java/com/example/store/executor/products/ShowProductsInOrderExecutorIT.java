@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class ShowProductsInOrderExecutorTest extends BaseExecutorTest {
+class ShowProductsInOrderExecutorIT extends BaseExecutorTest {
 
     @Override
     protected void setExecutor() {

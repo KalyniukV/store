@@ -5,20 +5,18 @@ import com.example.store.domain.Products;
 import com.example.store.domain.ProductsStatus;
 import com.example.store.exception.ProductsNotFoundException;
 import com.example.store.repository.ProductsRepository;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Service(value = "productsService")
-@Slf4j
+@Service
+@RequiredArgsConstructor
 public class ProductsServiceImpl implements ProductsService {
 
-    @Autowired
-    private ProductsRepository productsRepository;
+    private final ProductsRepository productsRepository;
 
     @Override
     public Products create(String name, Integer price) {
@@ -28,9 +26,7 @@ public class ProductsServiceImpl implements ProductsService {
                                     .status(ProductsStatus.in_stock)
                                     .build();
 
-        Products saveProducts = productsRepository.save(products);
-
-        return saveProducts;
+        return productsRepository.save(products);
     }
 
     @Override

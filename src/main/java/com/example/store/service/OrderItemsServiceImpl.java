@@ -5,17 +5,17 @@ import com.example.store.domain.OrderItemsPK;
 import com.example.store.domain.Orders;
 import com.example.store.domain.Products;
 import com.example.store.repository.OrderItemsRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 
 @Service
+@RequiredArgsConstructor
 public class OrderItemsServiceImpl implements OrderItemsService {
 
-    @Autowired
-    private OrderItemsRepository orderItemsRepository;
+    private final OrderItemsRepository orderItemsRepository;
 
     @Override
     public OrderItems create(Orders orders, Products product, Integer quantity) {

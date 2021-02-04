@@ -1,7 +1,6 @@
 package com.example.store.executor.ordersItems;
 
 import com.example.store.data.OrdersEntry;
-import com.example.store.domain.Orders;
 import com.example.store.executor.BaseExecutorTest;
 import com.example.store.util.DateHelper;
 import org.junit.jupiter.api.Test;
@@ -10,7 +9,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class ShowOrdersEntryExecutorTest extends BaseExecutorTest {
+class ShowOrdersEntryExecutorIT extends BaseExecutorTest {
 
     @Override
     protected void setExecutor() {

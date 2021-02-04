@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 
-class CreateProductExecutorTest extends BaseExecutorTest {
+class CreateProductExecutorIT extends BaseExecutorTest {
 
     @Override
     protected void setExecutor() {
