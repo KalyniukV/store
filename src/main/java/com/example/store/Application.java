@@ -12,6 +12,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -25,6 +26,7 @@ public class Application implements CommandLineRunner {
     ApplicationContext context;
 
     @Override
+    @Transactional
     public void run(String... args) {
         mainMenu();
 

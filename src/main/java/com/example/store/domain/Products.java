@@ -38,7 +38,7 @@ public class Products {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
 
-    @OneToMany(mappedBy = "orders", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "products", fetch = FetchType.LAZY)
     private List<OrderItems> orderItems;
 
 }
