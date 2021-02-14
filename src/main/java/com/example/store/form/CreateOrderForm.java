@@ -3,11 +3,11 @@ package com.example.store.form;
 import com.example.store.exception.CancelException;
 import com.example.store.util.CommandAsker;
 import com.example.store.util.Printer;
+import com.example.store.util.ValidationHelper;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import java.util.*;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Getter
@@ -35,12 +35,19 @@ public class CreateOrderForm {
                continue;
            }
 
-           Integer id = Integer.valueOf(prodsList.get(0).trim());
-           Integer quantity = Integer.valueOf(prodsList.get(1).trim());
-           productsMap.put(id, quantity);
+            fillProductsMap(prodsList);
         }
 
         confirm();
+    }
+
+    private void fillProductsMap(List<String> prodsList) {
+        if (ValidationHelper.isNumeric(prodsList.get(0).trim()) &&
+                ValidationHelper.isNumeric(prodsList.get(1).trim())) {
+            Integer id = Integer.valueOf(prodsList.get(0).trim());
+            Integer quantity = Integer.valueOf(prodsList.get(1).trim());
+            productsMap.put(id, quantity);
+        }
     }
 
     private void confirm() {
@@ -66,12 +73,4 @@ public class CreateOrderForm {
         printer.print();
     }
 
-
-    private boolean isNumeric(String strNum) {
-        if (strNum == null) {
-            return false;
-        }
-        Pattern pattern = Pattern.compile("-?\\d+(\\.\\d+)?");
-        return pattern.matcher(strNum).matches();
-    }
 }

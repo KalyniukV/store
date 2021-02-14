@@ -1,13 +1,11 @@
 package com.example.store.form;
 
-import com.example.store.exception.CancelException;
 import com.example.store.exception.PasswordException;
 import com.example.store.util.CommandAsker;
 import com.example.store.util.PasswordHelper;
+import com.example.store.util.ValidationHelper;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-
-import java.util.regex.Pattern;
 
 @Getter
 @RequiredArgsConstructor
@@ -30,20 +28,12 @@ public class RemoveProductForm {
     }
 
     private void id(String command) {
-        if (isNumeric(command)) {
+        if (ValidationHelper.isNumeric(command)) {
             id = command;
         } else {
             command = commandAsker.ask(ASK_REMOVE_BY_ID);
             id(command);
         }
-    }
-
-    private boolean isNumeric(String strNum) {
-        if (strNum == null) {
-            return false;
-        }
-        Pattern pattern = Pattern.compile("-?\\d+(\\.\\d+)?");
-        return pattern.matcher(strNum).matches();
     }
 
     private void passwordValidation() throws PasswordException {

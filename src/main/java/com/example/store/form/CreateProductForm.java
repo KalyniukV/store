@@ -1,6 +1,7 @@
 package com.example.store.form;
 
 import com.example.store.util.CommandAsker;
+import com.example.store.util.ValidationHelper;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -26,13 +27,13 @@ public class CreateProductForm {
     }
 
     private void price() {
-        try {
-            price = Integer.valueOf(commandAsker.ask(ASK_PRICE));
-        } catch (NumberFormatException e) {
-            System.out.println("Enter only number");
+        String price = commandAsker.ask(ASK_PRICE);
+        if (ValidationHelper.isNumeric(price)) {
+            this.price = Integer.valueOf(price);
+        } else {
+            System.out.println("Enter only number or \"cancel\" for cancel operation");
             price();
         }
     }
-
 
 }

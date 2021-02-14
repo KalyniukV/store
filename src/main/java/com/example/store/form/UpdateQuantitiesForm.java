@@ -1,6 +1,7 @@
 package com.example.store.form;
 
 import com.example.store.util.CommandAsker;
+import com.example.store.util.ValidationHelper;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -20,8 +21,22 @@ public class UpdateQuantitiesForm {
         String update = commandAsker.ask(ASK_FOR_UPDATE);
         String[] formData = update.split("\\s+");
 
-        orderId = Integer.valueOf(formData[0]);
-        productId = Integer.valueOf(formData[1]);
-        quantity = Integer.valueOf(formData[2]);
+        try {
+            orderId = numberValidation(formData[0], "orderId");
+            productId = numberValidation(formData[1], "productId");
+            quantity = numberValidation(formData[2], "quantity");
+        } catch (NumberFormatException e) {
+            System.out.println(e.getMessage());
+            fillOutTheForm();
+        }
+
+    }
+
+    private Integer numberValidation (String value, String name) {
+        if (ValidationHelper.isNumeric(value)) {
+           return Integer.valueOf(value);
+        } else {
+            throw new NumberFormatException(name + " is not numeric. Enter only number or \"cancel\" for cancel operation");
+        }
     }
 }
