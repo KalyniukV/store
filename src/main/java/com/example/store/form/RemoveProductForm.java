@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class RemoveProductForm {
     public static final String ASK_FOR_REMOVE = "Enter product id for remove. Type \"all\" to remove all products: ";
-    public static final String ASK_REMOVE_BY_ID = "For id enter only number. Or type exit for cancel";
+    public static final String ASK_REMOVE_BY_ID = "For id enter only number. Or type \"cancel\" for cancel operation";
     public static final String ASK_PASSWORD = "For remove enter password: ";
 
     private final CommandAsker commandAsker;
